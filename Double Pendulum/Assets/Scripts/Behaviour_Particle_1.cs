@@ -20,6 +20,8 @@ public class Behaviour_Particle_1 : MonoBehaviour
     float a2;
 
     float g; //used for calculations
+    float framerate = 60;
+    float dt;
     float N1_1;
     float N2_1;
     float N3_1;
@@ -32,36 +34,33 @@ public class Behaviour_Particle_1 : MonoBehaviour
     float D1_2;
 
     void Start () {
-
-        m1 = 100; //initial properties of p1
+        m1 = 5; //initial properties of p1
         l1 = 5;
-        theta1 = Mathf.PI /2;
+        theta1 = Mathf.PI/2;
         v1 = 0;
 
 
-        m2 = 100; //initial properties of p2
-        l2 = 5;
-        theta2 = 0;
+        m2 = 7; //initial properties of p2
+        l2 = 7;
+        theta2 = Mathf.PI/2;
         v2 = 0;
 
-        g = 100; //gravitational constant
-
-        a1 = 0.0005f;
-        a2 = 0.0001f;
+        g = 9.81f; //gravitational constant
+        dt = 0.2f / framerate;
     }
 	
 	void Update () {
-        //Acceleration();
+        Acceleration();
         
-        v1 = v1 + a1;
+        v1 = v1 + a1 *dt;
         theta1 = theta1 + v1;
 
-        v2 = v2 + a2;
+        v2 = v2 + a2*dt;
         theta2 = theta2 + v2;
 
         Position();
+        DrawLine();
 	}
-    /*
     void Acceleration()
     {
         N1_1 = -g * (2 * m1 + m2) * Mathf.Sin(theta1);
@@ -80,12 +79,17 @@ public class Behaviour_Particle_1 : MonoBehaviour
         
         a2 = N1_2*(N2_2+N3_2+N4_2)/D1_2;
     }
-    */
 
     void Position()
     {
         x1 = l1 * Mathf.Sin(theta1);
         y1 = -l1 * Mathf.Cos(theta1);
         transform.position = new Vector3(x1, y1, 0);
+    }
+    
+    void DrawLine()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawLine(new Vector3(0,0,0),new Vector3(x1,y1,0));
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Behaviour_Particle_2 : MonoBehaviour {
 
     float x1, y1;
-    float x2, y2;
+    public float x2, y2;
     float l2;
     float theta2;
 	void Start () {
