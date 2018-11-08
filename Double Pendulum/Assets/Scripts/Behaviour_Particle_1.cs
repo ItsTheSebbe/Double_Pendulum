@@ -5,19 +5,17 @@ using UnityEngine;
 public class Behaviour_Particle_1 : MonoBehaviour
 {
     public GameObject Particle1;
-    public float l1; //properties p1
+    public float x1; //properties p1
+    public float y1;
+    public float l1; 
     public float m1;
     public float theta1;
-    public float x1;
-    public float y1;
     float v1;
     float a1;
 
     public float l2; //properties p2
     public float m2;
     public float theta2;
-    float x2;
-    float y2;
     float v2;
     float a2;
 
@@ -37,20 +35,23 @@ public class Behaviour_Particle_1 : MonoBehaviour
 
         m1 = 100; //initial properties of p1
         l1 = 5;
-        theta1 = 1; //in degrees
+        theta1 = Mathf.PI /2;
         v1 = 0;
 
 
         m2 = 100; //initial properties of p2
         l2 = 5;
-        theta2 = 0; //in degrees
+        theta2 = 0;
         v2 = 0;
 
         g = 100; //gravitational constant
+
+        a1 = 0.0005f;
+        a2 = 0.0001f;
     }
 	
 	void Update () {
-        Acceleration();
+        //Acceleration();
         
         v1 = v1 + a1;
         theta1 = theta1 + v1;
@@ -60,30 +61,31 @@ public class Behaviour_Particle_1 : MonoBehaviour
 
         Position();
 	}
-
+    /*
     void Acceleration()
     {
-        N1_1 = -g * (2 * m1 + m2) * Mathf.Sin(theta1 * Mathf.PI / 180);
-        N2_1 = -m2 * g * Mathf.Sin((theta1 - 2 * theta2) * Mathf.PI / 180);
-        N3_1 = -2 * Mathf.Sin((theta1 - theta2) * Mathf.PI / 180) * m2;
-        N4_1 = v2 * v2 * l2 + v1 * v1 * l1 * Mathf.Cos((theta1 - theta2) * Mathf.PI / 180);
-        D1_1 = l1 * (2 * m1 + m2 - m2 * Mathf.Cos((2 * theta1 - 2 * theta2) * Mathf.PI / 180));
+        N1_1 = -g * (2 * m1 + m2) * Mathf.Sin(theta1);
+        N2_1 = -m2 * g * Mathf.Sin(theta1 - 2 * theta2);
+        N3_1 = -2 * Mathf.Sin(theta1 - theta2) * m2;
+        N4_1 = v2 * v2 * l2 + v1 * v1 * l1 * Mathf.Cos(theta1 - theta2);
+        D1_1 = l1 * (2 * m1 + m2 - m2 * Mathf.Cos(2 * theta1 - 2 * theta2));
 
         a1 = (N1_1 + N2_1 + N3_1*N4_1) / D1_1;
 
-        N1_2 = 2 * Mathf.Sin((theta1 - theta2) * Mathf.PI / 180);
+        N1_2 = 2 * Mathf.Sin(theta1 - theta2);
         N2_2 = v1 * v1 * l1 * (m1 + m2);
-        N3_2 = g * (m1 + m2) * Mathf.Cos(theta1 * Mathf.PI / 180);
-        N4_2 = v2*v2*l2*m2*Mathf.Cos((theta1-theta2) * Mathf.PI / 180);
-        D1_2 = l2 * (2 * m1 + m2 - m2 * Mathf.Cos((2 * theta1 - 2 * theta2) * Mathf.PI / 180));
+        N3_2 = g * (m1 + m2) * Mathf.Cos(theta1);
+        N4_2 = v2*v2*l2*m2*Mathf.Cos(theta1-theta2);
+        D1_2 = l2 * (2 * m1 + m2 - m2 * Mathf.Cos(2 * theta1 - 2 * theta2));
         
-        a2 = N2_1*(N2_2+N3_2+N4_2)/D1_2;
+        a2 = N1_2*(N2_2+N3_2+N4_2)/D1_2;
     }
+    */
 
     void Position()
     {
-        x1 = l1 * Mathf.Sin(theta1 * Mathf.PI/180);
-        y1 = -l1 * Mathf.Cos(theta1 * Mathf.PI / 180);
+        x1 = l1 * Mathf.Sin(theta1);
+        y1 = -l1 * Mathf.Cos(theta1);
         transform.position = new Vector3(x1, y1, 0);
     }
 }

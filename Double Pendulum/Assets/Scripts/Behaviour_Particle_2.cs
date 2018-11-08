@@ -16,8 +16,9 @@ public class Behaviour_Particle_2 : MonoBehaviour {
         x1 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().x1;
         y1 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().y1;
         l2 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().l2;
-        x2 = x1 + l2 * Mathf.Sin(theta2 * Mathf.PI / 180);
-        y2 = y1 - l2 * Mathf.Cos(theta2 * Mathf.PI / 180);
+        theta2 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().theta2;
+        x2 = x1 + l2 * Mathf.Sin(theta2);
+        y2 = y1 - l2 * Mathf.Cos(theta2);
         transform.position = new Vector3(x2, y2, 0);
     }
 }
