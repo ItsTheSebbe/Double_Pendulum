@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Behaviour_Particle_1 : MonoBehaviour
 {
-    public GameObject Particle1;
     public float x1; //properties p1
     public float y1;
     public float l1; 
@@ -34,14 +33,14 @@ public class Behaviour_Particle_1 : MonoBehaviour
     float D1_2;
 
     void Start () {
-        m1 = 5; //initial properties of p1
-        l1 = 5;
+        m1 = PlayerPrefs.GetFloat("m1"); //initial properties of p1
+        l1 = PlayerPrefs.GetFloat("l1");
         theta1 = Mathf.PI/2;
         v1 = 0;
 
 
-        m2 = 7; //initial properties of p2
-        l2 = 7;
+        m2 = PlayerPrefs.GetFloat("m2"); //initial properties of p2
+        l2 = PlayerPrefs.GetFloat("l2");
         theta2 = Mathf.PI/2;
         v2 = 0;
 
@@ -59,7 +58,6 @@ public class Behaviour_Particle_1 : MonoBehaviour
         theta2 = theta2 + v2;
 
         Position();
-        DrawLine();
 	}
     void Acceleration()
     {
@@ -87,9 +85,4 @@ public class Behaviour_Particle_1 : MonoBehaviour
         transform.position = new Vector3(x1, y1, 0);
     }
     
-    void DrawLine()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawLine(new Vector3(0,0,0),new Vector3(x1,y1,0));
-    }
 }

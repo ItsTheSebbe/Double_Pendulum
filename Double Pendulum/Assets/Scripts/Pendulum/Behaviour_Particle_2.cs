@@ -8,11 +8,11 @@ public class Behaviour_Particle_2 : MonoBehaviour {
     public float x2, y2;
     float l2;
     float theta2;
-	void Start () {
-		
-	}
-	
-	void Update () {
+    private void Start()
+    {
+    }
+
+    void Update () {
         x1 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().x1;
         y1 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().y1;
         l2 = GameObject.Find("Particle1").GetComponent<Behaviour_Particle_1>().l2;
