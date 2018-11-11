@@ -7,11 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Pendulum.unity
-    guid: 985dbb72408a6104392ffbace692b45e
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 83b4047711263f94f81e646ee1ab7d16
+  - enabled: 1
+    path: Assets/Scenes/Pendulum.unity
+    guid: 985dbb72408a6104392ffbace692b45e
   m_configObjects: {}

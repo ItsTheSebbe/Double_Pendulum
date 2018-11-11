@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Trail
+    uniqueID: 2184833789
+    locked: 0
+  - name: Balls
+    uniqueID: 504407459
+    locked: 0
+  - name: Background
+    uniqueID: 4156714477
+    locked: 0
