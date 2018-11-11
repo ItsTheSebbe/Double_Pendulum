@@ -8,8 +8,12 @@ public class Behaviour_Particle_2 : MonoBehaviour {
     public float x2, y2;
     float l2;
     float theta2;
+    float scale2;
+
     private void Start()
     {
+        scale2 = PlayerPrefs.GetFloat("scale2");
+        transform.localScale = new Vector3(scale2, scale2, 1);
     }
 
     void Update () {

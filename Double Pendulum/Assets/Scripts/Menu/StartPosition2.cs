@@ -7,13 +7,19 @@ public class StartPosition2 : MonoBehaviour {
     float x2, y2;
     public float l2, m2;
     public float theta2;
+    float scale2;
 
     private void Start()
     {
         l2 = 5;
         m2 = 5;
+        theta2 = Mathf.PI / 2;
+        scale2 = 1.5f * (m2 - 0.5f) / (49.5f) + 0.5f;
         PlayerPrefs.SetFloat("l2", l2);
         PlayerPrefs.SetFloat("m2", m2);
+        PlayerPrefs.SetFloat("theta2", theta2);
+        PlayerPrefs.SetFloat("scale2", scale2);
+        transform.localScale = new Vector3(scale2, scale2, 1);
     }
     void Update()
     {
@@ -34,5 +40,13 @@ public class StartPosition2 : MonoBehaviour {
     {
         m2 = newM2;
         PlayerPrefs.SetFloat("m2", m2);
+        scale2 = 1.5f * (m2 - 0.5f) / (49.5f) + 0.5f;
+        transform.localScale = new Vector3(scale2, scale2, 1);
+        PlayerPrefs.SetFloat("scale2", scale2);
+    }
+    public void AdjustTheta2(float newTheta2)
+    {
+        theta2 = newTheta2;
+        PlayerPrefs.SetFloat("theta2", theta2);
     }
 }

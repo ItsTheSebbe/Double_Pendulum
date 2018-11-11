@@ -11,6 +11,7 @@ public class Behaviour_Particle_1 : MonoBehaviour
     public float theta1;
     float v1;
     float a1;
+    float scale1;
 
     public float l2; //properties p2
     public float m2;
@@ -35,13 +36,15 @@ public class Behaviour_Particle_1 : MonoBehaviour
     void Start () {
         m1 = PlayerPrefs.GetFloat("m1"); //initial properties of p1
         l1 = PlayerPrefs.GetFloat("l1");
-        theta1 = Mathf.PI/2;
+        theta1 = PlayerPrefs.GetFloat("theta1", theta1); ;
         v1 = 0;
+        scale1 = PlayerPrefs.GetFloat("scale1");
+        transform.localScale = new Vector3(scale1, scale1, 1);
 
 
         m2 = PlayerPrefs.GetFloat("m2"); //initial properties of p2
         l2 = PlayerPrefs.GetFloat("l2");
-        theta2 = Mathf.PI/2;
+        theta2 = PlayerPrefs.GetFloat("theta2");
         v2 = 0;
 
         g = 9.81f; //gravitational constant
