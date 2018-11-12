@@ -22,6 +22,7 @@ public class Behaviour_Particle_1 : MonoBehaviour
     float g; //used for calculations
     float framerate = 60;
     float dt;
+    float dampening;
     float N1_1;
     float N2_1;
     float N3_1;
@@ -48,19 +49,21 @@ public class Behaviour_Particle_1 : MonoBehaviour
         v2 = 0;
 
         g = 9.81f; //gravitational constant
-        dt = 0.2f / framerate;
+        dt = 0.16f / framerate;
+        dampening = PlayerPrefs.GetFloat("dampening");
     }
 	
 	void Update () {
         Acceleration();
-        
         v1 = v1 + a1 *dt;
+        v2 = v2 + a2 * dt;
         theta1 = theta1 + v1;
-
-        v2 = v2 + a2*dt;
         theta2 = theta2 + v2;
+        v1 = v1 * dampening;
+        v2 = v2 * dampening;
 
         Position();
+
 	}
     void Acceleration()
     {
@@ -86,6 +89,9 @@ public class Behaviour_Particle_1 : MonoBehaviour
         x1 = l1 * Mathf.Sin(theta1);
         y1 = -l1 * Mathf.Cos(theta1);
         transform.position = new Vector3(x1, y1, 0);
+        LineRenderer line1 = GetComponent<LineRenderer>();
+        line1.SetPosition(0, new Vector3(0, 0, 0));
+        line1.SetPosition(1, new Vector3(x1, y1, 0));
     }
     
 }

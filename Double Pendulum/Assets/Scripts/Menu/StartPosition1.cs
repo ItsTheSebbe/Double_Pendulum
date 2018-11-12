@@ -10,6 +10,7 @@ public class StartPosition1 : MonoBehaviour {
     public float m1;
     public float theta1;
     float scale1;
+    public float dampening;
 
     // Use this for initialization
     void Start ()
@@ -18,10 +19,12 @@ public class StartPosition1 : MonoBehaviour {
         m1 = 5;
         theta1 = Mathf.PI / 2;
         scale1 = 1.5f * (m1 - 0.5f) / (49.5f) + 0.5f;
+        dampening = 1;
         PlayerPrefs.SetFloat("l1", l1);
         PlayerPrefs.SetFloat("m1", m1);
         PlayerPrefs.SetFloat("theta1", theta1);
         PlayerPrefs.SetFloat("scale1", scale1);
+        PlayerPrefs.SetFloat("dampening", dampening);
         transform.localScale = new Vector3(scale1, scale1, 1);
     }
 	
@@ -31,6 +34,9 @@ public class StartPosition1 : MonoBehaviour {
         x1 = l1 * Mathf.Sin(theta1);
         y1 = -l1 * Mathf.Cos(theta1);
         transform.position = new Vector3(x1, y1, 0);
+        LineRenderer line1 = GetComponent<LineRenderer>();
+        line1.SetPosition(0, new Vector3(0, 0, 0));
+        line1.SetPosition(1, new Vector3(x1, y1, 0));
     }
 
     public void AdjustL1(float newL1)

@@ -28,6 +28,9 @@ public class StartPosition2 : MonoBehaviour {
         x2 = x1 + l2 * Mathf.Sin(theta2);
         y2 = y1 - l2 * Mathf.Cos(theta2);
         transform.position = new Vector3(x2, y2, 0);
+        LineRenderer line2 = GetComponent<LineRenderer>();
+        line2.SetPosition(0, new Vector3(x1, y1, 0));
+        line2.SetPosition(1, new Vector3(x2, y2, 0));
     }
 
     public void AdjustL2(float newL2)
