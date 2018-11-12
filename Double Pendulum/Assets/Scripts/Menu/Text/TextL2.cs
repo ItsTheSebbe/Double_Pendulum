@@ -15,7 +15,7 @@ public class TextL2 : MonoBehaviour
         L2 = GetComponent<Text>();
     }
 
-    public void textUpdate(float l1)
+    public void textUpdate(float l2)
     {
         L2.text = "Length 2 = " + Math.Round(GameObject.Find("Particle2").GetComponent<StartPosition2>().l2, 2) + " m";
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class TextL1 : MonoBehaviour {
+public class TextL1 : MonoBehaviour
+{
 
     Text L1;
 
